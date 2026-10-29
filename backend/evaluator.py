@@ -8,7 +8,6 @@ import hashlib
 import logging
 import re
 from datetime import datetime, timezone
-from typing import Optional
 
 from schemas import CrawlState, ExtractedRecord, ResearchPlan
 
@@ -142,7 +141,6 @@ def _content_hash(record: ExtractedRecord) -> str:
 def is_duplicate(
     record: ExtractedRecord,
     existing_records: list[ExtractedRecord],
-    similarity_threshold: float = 0.8,
 ) -> bool:
     """
     True if the record's content hash matches an existing record,
@@ -194,7 +192,6 @@ def evaluate_state(state: CrawlState) -> CrawlState:
     Returns updated state.
     """
     plan = state.plan
-    non_duplicate_records = []
 
     for rec in state.records:
         # Re-score relevance

@@ -188,11 +188,14 @@ async def generate_report(
     )
     confidence = round(min(coverage_avg * 1.2, 1.0), 3)
 
+    # Determine whether LLM was used (at least one dynamic field was extracted via LLM)
+    llm_used = any(r.dynamic_fields for r in ranked)
+
     methodology = (
         f"1. Parsed research objective into a structured plan with {len(plan.required_fields)} fields. "
         f"2. Generated {len(plan.search_queries)} search queries. "
         f"3. Adaptively crawled up to {plan.max_pages} pages, prioritising by relevance and coverage. "
-        f"4. Extracted data using {'LLM-assisted' if True else 'pattern-based'} extraction. "
+        f"4. Extracted data using {'LLM-assisted' if llm_used else 'pattern-based'} extraction. "
         f"5. Ranked {len(ranked)} results using weighted scoring (relevance, reliability, freshness, completeness)."
     )
 

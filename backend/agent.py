@@ -11,9 +11,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
-import uuid
-from datetime import datetime
-from typing import Optional
+from urllib.parse import urlparse
 
 import database
 from config import settings
@@ -36,7 +34,7 @@ from planner import create_research_plan
 from ranking import rank_records
 from reporter import generate_report
 from schemas import (
-    CandidateURL, CrawlState, ResearchPlan, TaskStatus
+    CandidateURL, CrawlState, TaskStatus
 )
 
 log = logging.getLogger(__name__)
@@ -61,7 +59,6 @@ def _reprioritise_queue(state: CrawlState) -> CrawlState:
     visited_domains: dict[str, int] = {}
     for url in state.visited_urls:
         try:
-            from urllib.parse import urlparse
             d = urlparse(url).netloc
             visited_domains[d] = visited_domains.get(d, 0) + 1
         except Exception:
@@ -69,7 +66,6 @@ def _reprioritise_queue(state: CrawlState) -> CrawlState:
 
     for candidate in state.candidate_urls:
         try:
-            from urllib.parse import urlparse
             domain = urlparse(candidate.url).netloc
         except Exception:
             domain = ""

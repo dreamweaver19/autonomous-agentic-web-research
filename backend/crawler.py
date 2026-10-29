@@ -10,7 +10,7 @@ import logging
 import socket
 import time
 import urllib.parse
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 from urllib.robotparser import RobotFileParser
 
@@ -27,6 +27,7 @@ _USER_AGENT = (
 
 # Private IP ranges to block (SSRF protection)
 _PRIVATE_RANGES = [
+    ipaddress.ip_network("0.0.0.0/8"),
     ipaddress.ip_network("10.0.0.0/8"),
     ipaddress.ip_network("172.16.0.0/12"),
     ipaddress.ip_network("192.168.0.0/16"),

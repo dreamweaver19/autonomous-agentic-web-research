@@ -6,9 +6,7 @@ from __future__ import annotations
 
 import logging
 import re
-import time
 import urllib.parse
-from typing import Optional
 
 import httpx
 from bs4 import BeautifulSoup

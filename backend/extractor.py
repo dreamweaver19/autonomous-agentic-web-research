@@ -4,7 +4,6 @@ Uses BeautifulSoup for boilerplate removal and LLM for dynamic field extraction.
 """
 from __future__ import annotations
 
-import hashlib
 import logging
 import re
 from datetime import datetime

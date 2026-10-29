@@ -39,7 +39,6 @@ class Settings(BaseSettings):
     # Search provider
     search_provider: str = "duckduckgo_html"
     serper_api_key: str = ""
-    serpapi_key: str = ""
 
     # Crawl defaults
     default_max_pages: int = 20

@@ -5,11 +5,8 @@ pydantic-settings
 sqlalchemy
 aiosqlite
 httpx
-requests
 beautifulsoup4
 python-dotenv
-python-multipart
 tldextract
-anyio
 pytest
 pytest-asyncio

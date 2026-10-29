@@ -7,7 +7,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Optional
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field
 
 
 # ──────────────────────────────────────────────
@@ -21,13 +21,6 @@ class TaskStatus(str, Enum):
     COMPLETED = "completed"
     FAILED = "failed"
     CANCELLED = "cancelled"
-
-
-class URLStatus(str, Enum):
-    PENDING = "pending"
-    CRAWLED = "crawled"
-    FAILED = "failed"
-    SKIPPED = "skipped"
 
 
 # ──────────────────────────────────────────────
